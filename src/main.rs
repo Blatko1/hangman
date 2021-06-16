@@ -21,7 +21,7 @@ fn start() {
     let mut guess: char;
 
     loop{
-        println!("{}\n", art::SPRITES[mistakes]);
+        println!("{}\n", art::SPRITES[6]);
         println!("{}\n", encrypted);
         println!("{}\n", secret);
         println!("{:?}\n", temp);
@@ -76,3 +76,6 @@ fn get_input() -> char {
     };
 
 }
+
+// TODO remove all spaces from the temp guessing vec.__rust_force_expr!
+// TODO Finish the decrypt_encrypted.

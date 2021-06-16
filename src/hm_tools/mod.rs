@@ -44,13 +44,13 @@ pub mod tools{
         list.dedup();
     }
 
-    pub fn decrypt_encrypted(guess: char, encr: &mut String, word: String) {
+    /*pub fn decrypt_encrypted(guess: char, encr: &mut String, word: String) {
         let mut positions: Vec<i32> = Vec::new();
         for c in word.chars() {
             if(c == char){
                 positions.push(value: T)
             }
         }
-    }
+    }*/
 
 }
