@@ -5,7 +5,7 @@ use std::io;
 
 fn main() {
     std::process::Command::new("clear").status().unwrap();
-    println!("Welcome to Hangman Offical Terminal Game 1978 Copyright, all Right Reserved");
+    println!("Welcome to Hangman Official Terminal Game 1978 Copyright, all Right Reserved");
 
     start();
 
@@ -15,20 +15,23 @@ fn start() {
 
     let mut mistakes = 0;
     let secret = tools::random_word();
-    let mut temp: Vec<char> = secret.chars().collect();
+    let mut temp: Vec<char> = secret.clone().chars().collect();
     tools::remove_duplicates(&mut temp);
     let mut encrypted = tools::encrypt_word(&secret);
     let mut guess: char;
 
     loop{
-        println!("{}\n", art::SPRITES[6]);
+        println!("{}\n", art::SPRITES[mistakes]);
         println!("{}\n", encrypted);
-        println!("{}\n", secret);
-        println!("{:?}\n", temp);
+        //println!("{}\n", secret);
+        //println!("{:?}\n", temp);
         
         guess = get_input();
         if is_guessed(guess, &mut temp) {
-            println!("There!");
+            tools::decrypt_encrypted(guess, &mut encrypted, &secret);
+        }
+        else {
+            mistakes += 1;
         }
 
         std::process::Command::new("clear").status().unwrap();
@@ -55,7 +58,7 @@ fn is_guessed(guess: char, list: &mut Vec<char>) -> bool{
 
 fn get_input() -> char {
 
-    let mut input = String::new();
+    let mut input: String;
     
     loop {
         input = String::new();
@@ -76,6 +79,3 @@ fn get_input() -> char {
     };
 
 }
-
-// TODO remove all spaces from the temp guessing vec.__rust_force_expr!
-// TODO Finish the decrypt_encrypted.
